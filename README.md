@@ -116,3 +116,8 @@ Avoids creation of .DS_Store and AppleDouble files.
 ```bash
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 ```
+
+## Set Current Folder as Default Search Scope
+```bash
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+```
