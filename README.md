@@ -124,7 +124,7 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 ```
 
 
-## Set Current Folder as Default Search Scope
+## Always search within the current Folder
 ```bash
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 ```
@@ -134,3 +134,140 @@ defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 ```bash
 brew analytics off
 ```
+
+
+## Disable AutoCorrect
+```bash
+defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
+```
+
+
+## Expand Save and Print Dialogs by Default
+This one can save you many clicks. By default, the “print” and “save” dialogs are very small with some default options selected, like Desktop. These four commands will expand those for you.
+```bash
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true && \
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true && \
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true && \
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+```
+
+
+## Key Repeats
+This one is crucial as well, if you try to delete a word or letters, you can use shortcuts, but by default pressing “delete/backspace” multiple times in a row seems to be faster than holding it; this is definitely odd. You can make it faster by the following commands:
+Key repeat (default is 2 or 30 ms)
+```bash
+defaults write -g KeyRepeat -int 0.02
+```
+When the Key repeat starts (default is 15 or 225ms):
+```bash
+defaults write -g InitialKeyRepeat -int 10
+```
+
+
+## Safari Default Web Page
+```bash
+defaults write com.apple.Safari HomePage -string "about:blank"
+```
+
+
+## 'Are you sure you want to open this application?'
+```bash
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+```
+
+
+## Allow apps downloaded from "Anywhere" to be opened
+```bash
+sudo spctl - master-disable
+```
+
+
+## Change the Screen Shot image type from PNG to JPG
+```bash
+defaults write com.apple.screencapture type jpg && killall SystemUIServer
+```
+
+
+## Dock to the left
+```bash
+defaults write com.apple.Dock orientation -string left
+```
+
+
+## Hide Finder status bar
+defaults write com.apple.Finder ShowStatusBar -bool false
+
+
+
+## Hide Finder path bar
+defaults write com.apple.Finder ShowPathbar -bool false
+
+
+## Hide internal hard drives on desktop
+defaults write com.apple.Finder ShowHardDrivesOnDesktop -bool true
+
+## Hide external hard drives on desktop
+defaults write com.apple.Finder ShowExternalHardDrivesOnDesktop -bool true
+
+## Hide removable media on desktop
+defaults write com.apple.Finder ShowRemovableMediaOnDesktop -bool true
+
+## Hide mounted servers on desktop
+defaults write com.apple.Finder ShowMountedServersOnDesktop -bool true
+
+## Disable the warning before emptying the Trash
+defaults write com.apple.Finder WarnOnEmptyTrash -bool false
+
+disable safari auto open files
+$ defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
+
+hide bookmarks bar
+$ defaults write com.apple.Safari ShowFavoritesBar -bool false
+
+disable crash reporter
+$ defaults write com.apple.CrashReporter DialogType none
+
+## Disabel GateKeeper
+sudo spctl --master-disable
+sudo defaults write /Library/Preferences/com.apple.security GKAutoRearm -bool false
+
+
+## Enable Touch ID for sudo
+cd /etc/pam.d
+sudo cp sudo_local.template sudo_local
+sudo pico sudo_local
+In that file, navigate to the line that contains with pam_tid.so and delete the hashtag (#) at the beginning. Save the file out by pressing Control-X, typing ‘Y’ to save your changes, and hitting Return.
+
+
+## Don't display screeshot thumbnail and save immediately
+defaults write com.apple.screencapture "show-thumbnail" -bool "false"
+
+## Do not display the warning when changing a file extension
+defaults write com.apple.finder "FXEnableExtensionChangeWarning" -bool "false" && killall Finder
+
+## Set light click weight (threshold)
+defaults write com.apple.AppleMultitouchTrackpad "FirstClickThreshold" -int "0"
+
+## Do not autogather large files when submitting a feedback report
+defaults write com.apple.appleseed.FeedbackAssistant "Autogather" -bool "false"
+
+## Disable application quarantine message
+defaults write com.apple.LaunchServices "LSQuarantine" -bool "false"
+
+## Set machine sleep to 2 minutes on battery
+sudo pmset -b sleep 2
+
+## Set machine sleep to 3 minutes while charging
+sudo pmset -b sleep 3
+
+# Require password immediately after sleep or screen saver begins
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 0
+
+## Disable bottom right corner quick note
+defaults write com.apple.dock wvous-br-corner -int 0
+defaults write com.apple.dock wvous-br-modifier -int 0
+
+
+# Safari disable Warn about fraudulent websites
+defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool false
