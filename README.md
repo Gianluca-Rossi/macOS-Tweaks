@@ -21,15 +21,18 @@ defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 ```
 
+
 ## Deactivate and Stop the Remote Management Service
 ```bash
 sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -deactivate -stop
 ```
 
+
 ## Disable ARD Agent and Remove Access Privileges for All Users (Default)
 ```bash
 sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -deactivate -configure -access -off
 ```
+
 
 ## Remove Apple Remote Desktop Settings
 ```bash
@@ -73,6 +76,7 @@ printf "Mail index before: %s\nMail index after: %s\n" $SIZE_BEFORE $SIZE_AFTER
 defaults write com.apple.TextEdit NSShowAppCentricOpenPanelInsteadOfUntitledFile -bool false
 ```
 
+
 ## Use Plain Text Mode as Default
 ```bash
 defaults write com.apple.TextEdit RichText -int 0
@@ -83,6 +87,7 @@ defaults write com.apple.TextEdit RichText -int 0
 ```bash
 sudo tmutil disable
 ```
+
 
 ## Prevent Time Machine from Prompting to Use New Hard Drives as Backup Volume
 ```bash
@@ -111,13 +116,21 @@ Avoids creation of .DS_Store and AppleDouble files.
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 ```
 
+
 ## Disable Creation of Metadata Files on USB Volumes
 Avoids creation of .DS_Store and AppleDouble files.
 ```bash
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 ```
 
+
 ## Set Current Folder as Default Search Scope
 ```bash
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+```
+
+
+## Disable Homebrew analytics
+```bash
+brew analytics off
 ```
