@@ -271,3 +271,28 @@ defaults write com.apple.dock wvous-br-modifier -int 0
 
 # Safari disable Warn about fraudulent websites
 defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool false
+
+
+# Disable "Ask Siri"
+defaults write com.apple.assistant.support 'Assistant Enabled' -bool false
+
+# Disable Siri voice feedback
+defaults write com.apple.assistant.backedup 'Use device speaker for TTS' -int 3
+
+
+# Disable Siri telemetry
+defaults write com.apple.assistant.support 'Siri Data Sharing Opt-In Status' -int 2
+
+
+Improving Bluetooth audio quality
+	#defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+	defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Max (editable)" 80
+	defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" 40
+	defaults write com.apple.BluetoothAudioAgent "Apple Initial Bitpool (editable)" 80
+	defaults write com.apple.BluetoothAudioAgent "Apple Initial Bitpool Min (editable)" 80
+	defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool" 80
+	defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool Max" 80
+	defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool Min" 80
+
+ Disable potential DNS leaks
+ sudo defaults write /Library/Preferences/com.apple.mDNSResponder.plist NoMulticastAdvertisements -bool YES
